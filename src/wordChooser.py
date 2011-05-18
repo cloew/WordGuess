@@ -5,9 +5,11 @@ class WordChooser:
     words = {}
     words[3] = ["any", "bye", "say", "day", "lie", "dye", "ski", "fly"]
     
+    MAXWORDLENGTH = 3
+    
     @staticmethod
     def pickWord(length):
         """ Picks a word with the given length """
-        return random.choice(words[length])
+        return random.choice(WordChooser.words[length])
         
       

@@ -1,3 +1,4 @@
+from wordGuessGame import WordGuessGame
 
 class ConsoleScreen:
     """ Allows use of Command-Line console as the Screen """
@@ -22,6 +23,12 @@ class ConsoleScreen:
             
     def startGame(self):
         """ Starts a Game of GuessWord """
+        game = WordGuessGame(self)
+        game.start()
+        
+    def printScore(self, score):
+        """ Prints the given Score """
+        print "\nYou scored:", score, "points\n"
         
     def instructions(self):
         """ Prints the instructions to the console """

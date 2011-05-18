@@ -1,3 +1,25 @@
 Repository for all work related to WordGuess a Guess the Word game in python.
 
 Chris Loew
+
+THE PLAN!!!...more or less...
+
+VER 0: Command-Line -- Simple no feedback
+VER 1: Command-Line -- w/ feedback
+VER 2: GUI -- probably with PyGame
+
+Gameplay:
+
+Point based.
+10 attempts to solve word, after initial guess (since it is pretty much impossible to guess alright on first try)
+More points for less tries
+Feedback on each answer:
+    Command-Line Versions:
+        U: Letter is higher in the alphabet
+        D: Letter is lower
+        R: Letter is within 5 of the guess to the right
+        L: Ditto but left
+        C: Letter is within 5 of guess in this spot
+        X: Wrong!!! -- Allows computer to be a jerk on occasion
+        
+    Each of these options, has a weighted chance of occuring, since a guess can fall into several categories of responses
