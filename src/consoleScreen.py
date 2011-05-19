@@ -1,4 +1,5 @@
 from wordGuessGame import WordGuessGame
+from wordValidator import WordValidator
 
 class ConsoleScreen:
     """ Allows use of Command-Line console as the Screen """
@@ -26,6 +27,17 @@ class ConsoleScreen:
         game = WordGuessGame(self)
         game.start()
         
+    def guess(self,):
+        """ Prompts for a guess, and then reads a guess """
+        while True:
+            print "Enter your guess!"
+            guess = raw_input()
+            response = WordValidator.invalidGuess(guess)
+            if not response:
+                return guess
+            print response
+            
+    
     def printScore(self, score):
         """ Prints the given Score """
         print "\nYou scored:", score, "points\n"
