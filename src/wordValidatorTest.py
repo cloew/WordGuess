@@ -5,7 +5,7 @@ from wordValidator import WordValidator
 class WordValidatorTest(unittest.TestCase):
     def setUp(self):
         self.word = "sky"
-        WordValidator.word = "sky"
+        WordValidator.target = "sky"
 
     def testValidateGuess_Valid_Lower(self):
         """ Recognize valid guesses with Lowercase letters """
