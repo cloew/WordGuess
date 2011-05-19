@@ -28,4 +28,5 @@ class WordValidator:
             return False
             
         WordValidator.target = WordChooser.pickWord(len(WordValidator.target)+1)
+        WordValidator.INVALID_LENGTH = "Must be " + str(len(WordValidator.target)) + " characters long."
         
