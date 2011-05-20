@@ -18,6 +18,20 @@ class WordValidator:
         return False;
         
     @staticmethod
+    def validate(guess):
+        """ Returns a string with the response to the guess
+        Letters in the response correspond to the following circumstances
+        U: Letter is higher in the alphabet
+        D: Letter is lower
+        R: Letter is within 5 of the guess to the right
+        L: Ditto but left
+        C: Letter is within 5 of guess in this spot
+        X: Wrong!!! -- Allows computer to be a jerk on occasion
+        Any lower-case letter is the correct letter in the correct spot """
+        
+        return ""
+        
+    @staticmethod
     def nextWord():
         """ Moves validator to the next size of word or initializes if first time """
         if not WordValidator.target:

@@ -21,5 +21,6 @@ Feedback on each answer:
         L: Ditto but left
         C: Letter is within 5 of guess in this spot
         X: Wrong!!! -- Allows computer to be a jerk on occasion
+        Any lower-case letter is the correct letter in the correct spot
         
     Each of these options, has a weighted chance of occuring, since a guess can fall into several categories of responses

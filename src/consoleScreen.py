@@ -27,7 +27,7 @@ class ConsoleScreen:
         game = WordGuessGame(self)
         game.start()
         
-    def guess(self,):
+    def guess(self):
         """ Prompts for a guess, and then reads a guess """
         while True:
             print "Enter your guess!"
@@ -37,8 +37,12 @@ class ConsoleScreen:
                 return guess
             print response
             
+    def respond(self, response):
+        """ Responds to the previous guess by printing the response string """
+        print response
+            
     
-    def printScore(self, score):
+    def score(self, score):
         """ Prints the given Score """
         print "\nYou scored:", score, "points\n"
         
@@ -53,7 +57,7 @@ class ConsoleScreen:
                     L: Ditto but left
                     C: Letter is within 5 of guess in this spot
                     X: Wrong!!! -- Allows computer to be a jerk on occasion 
-                    Correct Letters appear as lower-case version of guess"""
+                    Any lower-case letter is the correct letter in the correct spot """
         
     def exit(self):
         """ Exits the game """
