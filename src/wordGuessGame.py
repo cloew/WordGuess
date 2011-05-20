@@ -7,9 +7,9 @@ class WordGuessGame:
         """ Initialize game """
         self.screen = screen
         self.score = 0
-        self.exit = 0
+        self.exit = False
         
-        self.SCORES = [1000, 900, 800, 700, 600, 500, 400, 300, 200, 100]
+        self.SCORES = [1000, 1000, 900, 800, 700, 600, 500, 400, 300, 200, 100]
         
     def start(self):
         """ Starts the game, runs until told to exit """
@@ -17,20 +17,27 @@ class WordGuessGame:
             if not WordValidator.nextWord():
                 break
             self.gameLoop()
-      
-        self.screen.score(self.score)
+            
+        self.screen.winGame()
             
     def gameLoop(self):
         """ Run a single iteration of the game aka solve for one word """
-        self.runGuess(0)
-        for numGuesses in range(10):
-            self.runGuess(numGuesses)
+        for numGuesses in range(11):
+            if self.runGuess(numGuesses):
+                return
+        
+        self.screen.gameOver(self.score)      # If you get here Game Over
+        self.exit = True
         
     def runGuess(self, numGuesses):
         """ Gets and evaluates one guess and increases the score """
-        guess = self.screen.guess()                      # Get initial guess
-        response = WordValidator.validate(guess) # Validate the guess
-        self.score = self.score + self.SCORES[numGuesses]
-        self.screen.respond(response)                  # Has Screen display the response to the guess
+        guess = self.screen.guess(numGuesses)                      # Get initial guess
+        if WordValidator.correctWord(guess):
+            self.score = self.score + self.SCORES[numGuesses]
+            self.screen.winRound(guess, self.score)
+            return True
+            
+        response = WordValidator.validate(guess)                   # Validate the guess
+        self.screen.respond(response)                                    # Has Screen display the response to the guess
         
         

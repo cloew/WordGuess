@@ -27,7 +27,7 @@ class ConsoleScreen:
         game = WordGuessGame(self)
         game.start()
         
-    def guess(self):
+    def guess(self, numGuesses):
         """ Prompts for a guess, and then reads a guess """
         while True:
             print "Enter your guess!"
@@ -45,6 +45,22 @@ class ConsoleScreen:
     def score(self, score):
         """ Prints the given Score """
         print "\nYou scored:", score, "points\n"
+        
+    def winRound(self, guess, score):
+        """ Prints that the user won the round """
+        print "Congratulations", guess, "was the word!"
+        self.score(score)
+        
+    def winGame(self):
+        """ Prints that the user won the game """
+        print "YOU WON THE GAME!"
+        
+    def gameOver(self, score):
+        """ Prints that the game is over """
+        print "GAME  OVER"
+        print "You ran out of guesses"
+        print "The correct answer was", WordValidator.target
+        self.score(score)
         
     def instructions(self):
         """ Prints the instructions to the console """

@@ -16,7 +16,12 @@ class WordValidator:
         if not guess.isalpha():
             return WordValidator.INVALID_CHARACTERS
         return False;
-        
+    
+    @staticmethod
+    def correctWord(guess):
+        """ Returns if the guess matches the guesses word """
+        return WordValidator.target == guess.lower()
+    
     @staticmethod
     def validate(guess):
         """ Returns a string with the response to the guess
@@ -43,4 +48,5 @@ class WordValidator:
             
         WordValidator.target = WordChooser.pickWord(len(WordValidator.target)+1)
         WordValidator.INVALID_LENGTH = "Must be " + str(len(WordValidator.target)) + " characters long."
+        return True
         
