@@ -15,8 +15,8 @@ Point based.
 More points for less tries
 Feedback on each answer:
     Command-Line Versions:
-        U: Letter is higher in the alphabet
-        D: Letter is lower
+        U: Letter is higher in the alphabet (closer to 'A')
+        D: Letter is lower (closer to 'Z')
         R: Letter is within 5 of the guess to the right
         L: Ditto but left
         C: Letter is within 5 of guess in this spot

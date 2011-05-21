@@ -13,6 +13,8 @@ class WordGuessGame:
         
     def start(self):
         """ Starts the game, runs until told to exit """
+        self.exit = False
+        
         while not self.exit:
             if not WordValidator.nextWord():
                 break
@@ -31,7 +33,7 @@ class WordGuessGame:
         
     def runGuess(self, numGuesses):
         """ Gets and evaluates one guess and increases the score """
-        guess = self.screen.guess(numGuesses)                      # Get initial guess
+        guess = self.screen.guess(numGuesses, self.SCORES[numGuesses])  # Get initial guess
         if WordValidator.correctWord(guess):
             self.score = self.score + self.SCORES[numGuesses]
             self.screen.winRound(guess, self.score)

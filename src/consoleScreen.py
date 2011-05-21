@@ -16,10 +16,11 @@ class ConsoleScreen:
             print "2. Instructions"
             print "3. Exit"
             
-            response = int(raw_input())
-            if response not in range(1, 4):
+            temp = raw_input()
+            if not temp.isdigit() or int(temp) not in range(1, 4):
                 print "\nSorry, please pick a # between 1 and 3\n"
             else:
+                response = int(temp)
                 self.options[response-1]()
             
     def startGame(self):
@@ -27,14 +28,15 @@ class ConsoleScreen:
         game = WordGuessGame(self)
         game.start()
         
-    def guess(self, numGuesses):
+    def guess(self, numGuesses, potScore):
         """ Prompts for a guess, and then reads a guess """
         while True:
-            print "Enter your guess!"
+            print "Enter your", len(WordValidator.target), "letter guess!"
+            print "Guess correctly to score %d points!" % potScore
             guess = raw_input()
             response = WordValidator.invalidGuess(guess)
             if not response:
-                return guess
+                return guess.lower()
             print response
             
     def respond(self, response):
@@ -48,7 +50,7 @@ class ConsoleScreen:
         
     def winRound(self, guess, score):
         """ Prints that the user won the round """
-        print "Congratulations", guess, "was the word!"
+        print "Congratulations '%s' was the word!" % guess
         self.score(score)
         
     def winGame(self):
@@ -67,8 +69,8 @@ class ConsoleScreen:
         print """10 attempts to solve word, after initial guess
                  More points for less tries
                  Feedback:
-                    U: Letter is higher in the alphabet
-                    D: Letter is lower
+                    U: Letter is higher in the alphabet (closer to 'A')
+                    D: Letter is lower (closer to 'Z')
                     R: Letter is within 5 of the guess to the right
                     L: Ditto but left
                     C: Letter is within 5 of guess in this spot
