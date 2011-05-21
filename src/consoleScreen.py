@@ -28,11 +28,20 @@ class ConsoleScreen:
         game = WordGuessGame(self)
         game.start()
         
-    def guess(self, numGuesses, potScore):
+    def guess(self, numGuesses):
         """ Prompts for a guess, and then reads a guess """
         while True:
             print "Enter your", len(WordValidator.target), "letter guess!"
-            print "Guess correctly to score %d points!" % potScore
+            print "Guess correctly to score %d points!" % WordGuessGame.SCORES[numGuesses]
+            if numGuesses == 0:
+                """ Let user know no penalty for very first guess """
+                print "First try! You get a freebe!"
+            elif numGuesses == WordGuessGame.ATTEMPTS -1:
+                """ Let user know its the last try """
+                print "Last try!"
+            else:
+                """ Tell user the number of guesses they have left """
+                print "You have %d guesses left (including this one)" % (WordGuessGame.ATTEMPTS - numGuesses)
             guess = raw_input()
             response = WordValidator.invalidGuess(guess)
             if not response:
@@ -67,15 +76,16 @@ class ConsoleScreen:
     def instructions(self):
         """ Prints the instructions to the console """
         print """10 attempts to solve word, after initial guess
-                 More points for less tries
-                 Feedback:
-                    U: Letter is higher in the alphabet (closer to 'A')
-                    D: Letter is lower (closer to 'Z')
-                    R: Letter is within 5 of the guess to the right
-                    L: Ditto but left
-                    C: Letter is within 5 of guess in this spot
-                    X: Wrong!!! -- Allows computer to be a jerk on occasion 
-                    Any lower-case letter is the correct letter in the correct spot """
+  More points for less tries
+  Feedback:
+    U: Letter is higher in the alphabet (closer to 'A')
+    D: Letter is lower (closer to 'Z')
+    R: Letter is within 5 of the guess to the right
+    L: Ditto but left
+    C: Letter is within 5 of guess in this spot
+    X: Wrong!!! -- Allows computer to be a jerk on occasion 
+    Any lower-case letter is the correct letter in the correct spot
+  If the guess letter is correct, it will always appear as a lower-case letter """
         
     def exit(self):
         """ Exits the game """

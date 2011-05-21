@@ -48,7 +48,7 @@ class WordValidator:
         return response
         
     @staticmethod
-    def validateChar(guess, target, right=None, left=None):
+    def validateChar(guess, target, left=None, right=None):
         """ Get the character in the response based on the target and guess chars """
         if WordValidator.match(guess, target):
             return target

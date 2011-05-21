@@ -2,10 +2,12 @@ Repository for all work related to WordGuess a Guess the Word game in python.
 
 Chris Loew
 
+To play run: word-guess.py
+
 THE PLAN!!!...more or less...
 
-VER 0: Command-Line -- Simple no feedback
-VER 1: Command-Line -- w/ feedback
+VER 0: Command-Line -- Simple no feedback   DONE!!!
+VER 1: Command-Line -- w/ feedback              DONE!!!
 VER 2: GUI -- probably with PyGame
 
 Gameplay:
