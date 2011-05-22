@@ -70,7 +70,7 @@ class ConsoleScreen:
         """ Prints that the game is over """
         print "GAME  OVER"
         print "You ran out of guesses"
-        print "The correct answer was", WordValidator.target
+        print "The correct answer was '%s'" % WordValidator.target
         self.score(score)
         
     def instructions(self):
