@@ -21,6 +21,8 @@ class WordChooser:
             except IOError:
                 print "Unable to retrieve %d character-long words" % file
                 exit(-1)
+            finally:
+                f.close()
                 
     
     @staticmethod

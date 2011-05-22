@@ -41,7 +41,7 @@ class ConsoleScreen:
                 print "Last try!"
             else:
                 """ Tell user the number of guesses they have left """
-                print "You have %d guesses left (including this one)" % (WordGuessGame.ATTEMPTS - numGuesses)
+                print "You have %d guesses left" % (WordGuessGame.ATTEMPTS - numGuesses)
             guess = raw_input()
             response = WordValidator.invalidGuess(guess)
             if not response:
