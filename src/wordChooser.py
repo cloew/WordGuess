@@ -10,11 +10,12 @@ class WordChooser:
     MAXWORDLENGTH = 6
     
     @staticmethod
-    def setUp():
+    def loadWords(path):
         """ Sets up the set of words """
         for file in range(WordChooser.FIRSTLENGTH, WordChooser.MAXWORDLENGTH+1):
+            f = None
             try:
-                f = open("words/%d" % file, 'r')
+                f = open("%swords/%d" % (path, file), 'r')
                 WordChooser.words[file] = []
                 for line in f:
                     WordChooser.words[file].append(line.strip())
@@ -22,12 +23,11 @@ class WordChooser:
                 print "Unable to retrieve %d character-long words" % file
                 exit(-1)
             finally:
-                f.close()
+                if f:
+                    f.close()
                 
     
     @staticmethod
     def pickWord(length):
         """ Picks a word with the given length """
         return random.choice(WordChooser.words[length])
-        
-WordChooser.setUp() # When this module is imported, prepare the WordCHooser
